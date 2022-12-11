@@ -1,9 +1,29 @@
 const searchBar = document.getElementById("searchil");
 const searchBar2 = document.getElementById("searchilce")
+const button = document.querySelector(".searchBut")
 const ikis = document.querySelector(".ikis")
 let nobetci5 = document.querySelector(".nobetci5")
-let nobetci3 = document.querySelector(".nobetci3")
+let nobetci2 = document.querySelector(".nobetci2")
 let nobetci1 = document.querySelector(".nobetci1")
+let nobetci3 = document.querySelector(".nobetci3")
+let nobetci6 = document.querySelector(".nobetci6")
+
+let nobetci4 = document.querySelector(".nobetci4")
+let ili = document.querySelector(".ili")
+let ipi = document.querySelector(".ipi")
+
+let ilkbir = document.querySelector(".ilkbir")
+
+let ilkiki = document.querySelector(".ilkiki")
+
+let ilkuc = document.querySelector(".ilkuc")
+
+let ikincibir = document.querySelector(".ikincibir")
+
+let ikinciiki = document.querySelector(".ikinciiki")
+
+let ikinciuc = document.querySelector(".ikinciuc")
+
 
 let aa = document.querySelector(".aa")
 const pho1 = document.querySelector(".pho1")
@@ -12,7 +32,9 @@ const setQuery = (e) => {
     getResult(searchBar2.value,searchBar.value)
  
 }
-
+const setq = () => {
+    getResult(searchBar2.value,searchBar.value)
+}
 const getResult = (sehirName,ilName) => {
     fetch(`https://api.collectapi.com/health/dutyPharmacy?ilce=${sehirName}&il=${ilName}`, {
         headers: {
@@ -50,45 +72,48 @@ const displayResult = (sonuc) => {
     let phone6 = document.querySelector('.pho6');
     console.log(sonuc)
     if(sonuc.result.length == 1){
-         
-        name1.innerHTML = `${sonuc.result[0].name} Eczanesi`     
-        dist1.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
-        address1.innerHTML = `${sonuc.result[0].address}`
-        phone1.innerHTML = `+90 ${sonuc.result[0].phone}`
+        nobetci1.style.display = "none"
+        nobetci3.style.display = "none"
+         nobetci2.style.backgroundColor = "#ffe4c4"
+        name2.innerHTML = `${sonuc.result[0].name.split(" ")[0]} Eczanesi`     
+        dist2.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
+        address2.innerHTML = `${sonuc.result[0].address}`
+        phone2.innerHTML = `+90 ${sonuc.result[0].phone}`
         searchBar2.value = ""
         searchBar.value = ""
-        phone1.href = `tel:+90${sonuc.result[0].phone}`
+        phone2.href = `tel:+90${sonuc.result[0].phone}`
            
     }else if(sonuc.result.length == 2){
+     
+
          
-         
-        nobetci3.style.display  = "none"
-        aa.style.width = "50vw"
-        nobetci1.style.width = "50vw"
-        name1.innerHTML = `${sonuc.result[0].name} Eczanesi`     
+        nobetci2.style.display  = "none"
+        aa.style.width = "45vw"
+        ikis.style.width = "45vw"
+        name1.innerHTML = `${sonuc.result[0].name.split(" ")[0]} Eczanesi`     
         dist1.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
         address1.innerHTML = `${sonuc.result[0].address}`
         phone1.innerHTML = `+90 ${sonuc.result[0].phone}`
-        name2.innerHTML = `${sonuc.result[1].name} Eczanesi`
-        dist2.innerHTML = `${sonuc.result[1].dist}, ${searchBar.value}`
-        address2.innerHTML = `${sonuc.result[1].address}`
-        phone2.innerHTML = `+90 ${sonuc.result[1].phone}`
+        name3.innerHTML = `${sonuc.result[1].name.split(" ")[0]} Eczanesi`
+        dist3.innerHTML = `${sonuc.result[1].dist}, ${searchBar.value}`
+        address3.innerHTML = `${sonuc.result[1].address}`
+        phone3.innerHTML = `+90 ${sonuc.result[1].phone}`
         searchBar2.value = ""
         searchBar.value = ""
         phone1.href = `tel:+90${sonuc.result[0].phone}`
-            phone2.href = `tel:+90${sonuc.result[1].phone}`
+            phone3.href = `tel:+90${sonuc.result[1].phone}`
            
 
     }else if(sonuc.result.length == 3){
-        name1.innerHTML = `${sonuc.result[0].name} Eczanesi`     
+        name1.innerHTML = `${sonuc.result[0].name.split(" ")[0]} Eczanesi`     
         dist1.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
         address1.innerHTML = `${sonuc.result[0].address}`
         phone1.innerHTML = `+90 ${sonuc.result[0].phone}`
-        name2.innerHTML = `${sonuc.result[1].name} Eczanesi`
+        name2.innerHTML = `${sonuc.result[1].name.split(" ")[0]} Eczanesi`
         dist2.innerHTML = `${sonuc.result[1].dist}, ${searchBar.value}`
         address2.innerHTML = `${sonuc.result[1].address}`
         phone2.innerHTML = `+90 ${sonuc.result[1].phone}`
-        name3.innerHTML = `${sonuc.result[2].name} Eczanesi`
+        name3.innerHTML = `${sonuc.result[2].name.split(" ")[0]} Eczanesi`
         dist3.innerHTML = `${sonuc.result[2].dist}, ${searchBar.value}`
         address3.innerHTML = `${sonuc.result[2].address}`
         phone3.innerHTML = `+90 ${sonuc.result[2].phone}`
@@ -99,22 +124,20 @@ const displayResult = (sonuc) => {
             phone3.href = `tel:+90${sonuc.result[2].phone}`
            
     }else if(sonuc.result.length == 4){
-        ikis.style.backgroundColor = "#ffe4c4"
-        if(sonuc.result[1].name.includes('ECZANESİ')){
-           var splity = sonuc.result[1].name.split(" ")
-        name1.innerHTML = `${sonuc.result[0].name} Eczanesi`     
+        ili.style.backgroundColor = "#ffe4c4"
+        name1.innerHTML = `${sonuc.result[0].name.split(" ")[0]} Eczanesi`     
         dist1.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
         address1.innerHTML = `${sonuc.result[0].address}`
         phone1.innerHTML = `+90 ${sonuc.result[0].phone}`
-        name2.innerHTML = `${splity[0]} Eczanesi`
+        name2.innerHTML = `${sonuc.result[1].name.split(" ")[0]} Eczanesi`
         dist2.innerHTML = `${sonuc.result[1].dist}, ${searchBar.value}`
         address2.innerHTML = `${sonuc.result[1].address}`
         phone2.innerHTML = `+90 ${sonuc.result[1].phone}`
-        name3.innerHTML = `${sonuc.result[2].name} Eczanesi`
+        name3.innerHTML = `${sonuc.result[2].name.split(" ")[0]} Eczanesi`
         dist3.innerHTML = `${sonuc.result[2].dist}, ${searchBar.value}`
         address3.innerHTML = `${sonuc.result[2].address}`
         phone3.innerHTML = `+90 ${sonuc.result[2].phone}`
-        name4.innerHTML = `${sonuc.result[3].name} Eczanesi`
+        name4.innerHTML = `${sonuc.result[3].name.split(" ")[0]} Eczanesi`
         dist4.innerHTML = `${sonuc.result[3].dist}, ${searchBar.value}`
         address4.innerHTML = `${sonuc.result[3].address}`
          
@@ -127,54 +150,34 @@ const displayResult = (sonuc) => {
             phone4.href = `tel:+90${sonuc.result[3].phone}`
             searchBar2.value = ""
         searchBar.value = ""
-        }else{
-        name1.innerHTML = `${sonuc.result[0].name} Eczanesi`     
+        }else if(sonuc.result.length == 5){
+     nobetci5.style.display = "none"
+     ili.style.width = "45vw"
+     ipi.style.width = "45vw"
+             ikis.style.backgroundColor = "#ffe4c4" 
+        ili.style.backgroundColor = "#ffe4c4" 
+        ipi.style.backgroundColor = "#ffe4c4" 
+
+        name1.innerHTML = `${sonuc.result[0].name.split(" ")[0]} Eczanesi`     
         dist1.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
         address1.innerHTML = `${sonuc.result[0].address}`
         phone1.innerHTML = `+90 ${sonuc.result[0].phone}`
-        name2.innerHTML = `${sonuc.result[1].name} Eczanesi`
+        name2.innerHTML = `${sonuc.result[1].name.split(" ")[0]} Eczanesi`
         dist2.innerHTML = `${sonuc.result[1].dist}, ${searchBar.value}`
         address2.innerHTML = `${sonuc.result[1].address}`
         phone2.innerHTML = `+90 ${sonuc.result[1].phone}`
-        name3.innerHTML = `${sonuc.result[2].name} Eczanesi`
+        name3.innerHTML = `${sonuc.result[2].name.split(" ")[0]} Eczanesi`
         dist3.innerHTML = `${sonuc.result[2].dist}, ${searchBar.value}`
         address3.innerHTML = `${sonuc.result[2].address}`
         phone3.innerHTML = `+90 ${sonuc.result[2].phone}`
-        name4.innerHTML = `${sonuc.result[3].name} Eczanesi`
+        name4.innerHTML = `${sonuc.result[3].name.split(" ")[0]} Eczanesi`
         dist4.innerHTML = `${sonuc.result[3].dist}, ${searchBar.value}`
         address4.innerHTML = `${sonuc.result[3].address}`
         phone4.innerHTML = `+90 ${sonuc.result[3].phone}`
-        searchBar2.value = ""
-        searchBar.value = ""
-        phone1.href = `tel:+90${sonuc.result[0].phone}`
-            phone2.href = `tel:+90${sonuc.result[1].phone}`
-            phone3.href = `tel:+90${sonuc.result[2].phone}`
-            phone4.href = `tel:+90${sonuc.result[3].phone}`
-        }
-    }else if(sonuc.result.length == 5){
-     
-        ikis.style.backgroundColor = "#ffe4c4" 
-        nobetci5.style.backgroundColor = "#ffe4c4" 
-        name1.innerHTML = `${sonuc.result[0].name} Eczanesi`     
-        dist1.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
-        address1.innerHTML = `${sonuc.result[0].address}`
-        phone1.innerHTML = `+90 ${sonuc.result[0].phone}`
-        name2.innerHTML = `${sonuc.result[1].name} Eczanesi`
-        dist2.innerHTML = `${sonuc.result[1].dist}, ${searchBar.value}`
-        address2.innerHTML = `${sonuc.result[1].address}`
-        phone2.innerHTML = `+90 ${sonuc.result[1].phone}`
-        name3.innerHTML = `${sonuc.result[2].name} Eczanesi`
-        dist3.innerHTML = `${sonuc.result[2].dist}, ${searchBar.value}`
-        address3.innerHTML = `${sonuc.result[2].address}`
-        phone3.innerHTML = `+90 ${sonuc.result[2].phone}`
-        name4.innerHTML = `${sonuc.result[3].name} Eczanesi`
-        dist4.innerHTML = `${sonuc.result[3].dist}, ${searchBar.value}`
-        address4.innerHTML = `${sonuc.result[3].address}`
-        phone4.innerHTML = `+90 ${sonuc.result[3].phone}`
-        name5.innerHTML = `${sonuc.result[4].name} Eczanesi`
-        dist5.innerHTML = `${sonuc.result[4].dist}, ${searchBar.value}`
-        address5.innerHTML = `${sonuc.result[4].address}`
-        phone5.innerHTML = `+90 ${sonuc.result[4].phone}`
+        name6.innerHTML = `${sonuc.result[4].name.split(" ")[0]} Eczanesi`
+        dist6.innerHTML = `${sonuc.result[4].dist}, ${searchBar.value}`
+        address6.innerHTML = `${sonuc.result[4].address}`
+        phone6.innerHTML = `+90 ${sonuc.result[4].phone}`
 
         searchBar2.value = ""
         searchBar.value = ""
@@ -182,32 +185,34 @@ const displayResult = (sonuc) => {
             phone2.href = `tel:+90${sonuc.result[1].phone}`
             phone3.href = `tel:+90${sonuc.result[2].phone}`
             phone4.href = `tel:+90${sonuc.result[3].phone}`
-        phone5.href = `tel:+90${sonuc.result[4].phone}`
+        phone6.href = `tel:+90${sonuc.result[4].phone}`
 
     }else if(sonuc.result.length == 6){
         ikis.style.backgroundColor = "#ffe4c4" 
-   
-        name1.innerHTML = `${sonuc.result[0].name} Eczanesi`     
+        ikincibir.style.backgroundColor= "#ffe4c4" 
+        ikinciiki.style.backgroundColor = "#ffe4c4" 
+        ikinciuc.style.backgroundColor= "#ffe4c4" 
+        name1.innerHTML = `${sonuc.result[0].name.split(" ")[0]} Eczanesi`     
         dist1.innerHTML = `${sonuc.result[0].dist}, ${searchBar.value}`
         address1.innerHTML = `${sonuc.result[0].address}`
         phone1.innerHTML = `+90 ${sonuc.result[0].phone}`
-        name2.innerHTML = `${sonuc.result[1].name} Eczanesi`
+        name2.innerHTML = `${sonuc.result[1].name.split(" ")[0]} Eczanesi`
         dist2.innerHTML = `${sonuc.result[1].dist}, ${searchBar.value}`
         address2.innerHTML = `${sonuc.result[1].address}`
         phone2.innerHTML = `+90 ${sonuc.result[1].phone}`
-        name3.innerHTML = `${sonuc.result[2].name} Eczanesi`
+        name3.innerHTML = `${sonuc.result[2].name.split(" ")[0]} Eczanesi`
         dist3.innerHTML = `${sonuc.result[2].dist}, ${searchBar.value}`
         address3.innerHTML = `${sonuc.result[2].address}`
         phone3.innerHTML = `+90 ${sonuc.result[2].phone}`
-        name4.innerHTML = `${sonuc.result[3].name} Eczanesi`
+        name4.innerHTML = `${sonuc.result[3].name.split(" ")[0]} Eczanesi`
         dist4.innerHTML = `${sonuc.result[3].dist}, ${searchBar.value}`
         address4.innerHTML = `${sonuc.result[3].address}`
         phone4.innerHTML = `+90 ${sonuc.result[3].phone}`
-        name5.innerHTML = `${sonuc.result[4].name} Eczanesi`
+        name5.innerHTML = `${sonuc.result[4].name.split(" ")[0]} Eczanesi`
         dist5.innerHTML = `${sonuc.result[4].dist}, ${searchBar.value}`
         address5.innerHTML = `${sonuc.result[4].address}`
         phone5.innerHTML = `+90 ${sonuc.result[4].phone}`
-        name6.innerHTML = `${sonuc.result[5].name} Eczanesi`
+        name6.innerHTML = `${sonuc.result[5].name.split(" ")[0]} Eczanesi`
         dist6.innerHTML = `${sonuc.result[5].dist}, ${searchBar.value}`
         address6.innerHTML = `${sonuc.result[5].address}`
         phone6.innerHTML = `+90 ${sonuc.result[5].phone}`
@@ -220,10 +225,10 @@ const displayResult = (sonuc) => {
             phone5.href = `tel:+90${sonuc.result[4].phone}`
             phone6.href = `tel:+90${sonuc.result[5].phone}`
     }
-    }
-
+    
+}
 
 searchBar2.addEventListener("keypress",setQuery)
-
+button.addEventListener("click",setq)
 
    
